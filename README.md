@@ -1,10 +1,8 @@
-#dialogflow
+# dialogflow
 
-- Install Dependencies
-pip install -r requirements.txt
+* Install Dependencies :  pip install -r requirements.txt
 
-- run webhook script
-python webhook.py
+* run webhook script : python webhook.py
 
 
 # kakaoplus
