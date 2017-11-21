@@ -33,18 +33,22 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
-
+# 어떤 URL이 우리가 작성한 함수를 실행시키는지 알려줌. HTTP POST request에만 응답할 것을 명시함 
 @app.route('/', methods=['POST'])
 def webhook():
+    # incoming JSON data를 python dictionary 로 변환
     req = request.get_json(silent=True, force=True)
 
     print("Request:")
     print(json.dumps(req, indent=4))
 
+    # webhook 실행할 결과 (user definded fuction)
     res = makeWebhookResult(req)
 
+    # python object 를 json 문자열로 변환 
     res = json.dumps(res, indent=4)
     # print(res)
+    # return avleues to a proper HTTP response object & header 추가
     r = make_response(res)
     r.headers['Content-Type'] = 'application/json'
     return r
